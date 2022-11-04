@@ -1,11 +1,11 @@
-
+import { UserMenuContainer } from "./UserMenu.styled";
 
 
 export default function UserMenu() {
     return (
-        <div>
+        <UserMenuContainer>
             <p>mango@mail.com</p>
-            <button>Logout</button>
-        </div>
+            <button>LOGOUT</button>
+        </UserMenuContainer>
     );
 };

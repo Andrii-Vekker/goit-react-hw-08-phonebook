@@ -1,5 +1,5 @@
 import { Formik, ErrorMessage  } from 'formik';
-import { FormContainer, BtnAdd, Label, Span, Input } from './LoginForm.style';
+import { FormContainer, BtnAdd, Label, Span, Input } from './RegisterForm.styled';
 import * as yup from 'yup';
 
 const schema = yup.object().shape({
@@ -14,7 +14,7 @@ const initialValues = {
   email: "",
     password: ""
 };
-export default function LoginForm() {
+export default function RegisterForm() {
 
   const handleSubmit = (values, { resetForm }) => {
 
@@ -25,7 +25,12 @@ export default function LoginForm() {
         <>
         <Formik validationSchema={schema} onSubmit={handleSubmit} initialValues={initialValues}>
             <FormContainer autoComplete="off">
-                              <Label htmlFor="email">
+                <Label htmlFor="name">
+                    <Span>Name</Span>
+                        <Input type="text" name="name"  />
+                    <ErrorMessage name='name' component="div"/> 
+                </Label>
+                 <Label htmlFor="email">
                   <Span>Email</Span>
                         <Input type="email" name="email" />
                     <ErrorMessage name='phone' component="div"/> 
@@ -35,7 +40,7 @@ export default function LoginForm() {
                         <Input type="password" name="password" />
                     <ErrorMessage name='phone' component="div"/> 
                 </Label>
-                    <BtnAdd type="submit">Login</BtnAdd>
+                    <BtnAdd type="submit">Register</BtnAdd>
             </FormContainer>
             </Formik>
             </>
