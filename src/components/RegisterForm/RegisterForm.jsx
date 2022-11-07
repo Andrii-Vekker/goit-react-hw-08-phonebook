@@ -1,6 +1,9 @@
 import { Formik, ErrorMessage  } from 'formik';
 import { FormContainer, BtnAdd, Label, Span, Input } from './RegisterForm.styled';
 import * as yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { signupUser } from 'redux/auth/authOperations';
+
 
 const schema = yup.object().shape({
     name: yup.string().required("Please enter your name"),
@@ -15,11 +18,12 @@ const initialValues = {
     password: ""
 };
 export default function RegisterForm() {
+  const dispatch = useDispatch();
 
-  const handleSubmit = (values, { resetForm }) => {
-
-  }
-
+    const handleSubmit = (values, { resetForm }) => {
+        dispatch(signupUser(values))
+        resetForm()
+    };
     
     return (
         <>
@@ -33,12 +37,12 @@ export default function RegisterForm() {
                  <Label htmlFor="email">
                   <Span>Email</Span>
                         <Input type="email" name="email" />
-                    <ErrorMessage name='phone' component="div"/> 
+                    <ErrorMessage name='email' component="div"/> 
             </Label>
             <Label htmlFor="password">
                   <Span>Password</Span>
                         <Input type="password" name="password" />
-                    <ErrorMessage name='phone' component="div"/> 
+                    <ErrorMessage name='password' component="div"/> 
                 </Label>
                     <BtnAdd type="submit">Register</BtnAdd>
             </FormContainer>

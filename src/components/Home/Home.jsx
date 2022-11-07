@@ -3,6 +3,6 @@
 
 export default function Home() {
   return (
-    <div>Please register or Login</div>
+    <div>Please register or login</div>
   )
 }
