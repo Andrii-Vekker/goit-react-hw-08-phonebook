@@ -6,6 +6,7 @@ import {Form, Field } from 'formik';
 export const FormContainer = styled(Form)`
 display: flex;
 margin: 0 auto;
+margin-top: 10%;
 flex-direction: column;
 border: 1px solid black;
 border-radius: 4px;
@@ -40,7 +41,7 @@ margin-bottom: 20px;
 
 export const Input = styled(Field)`
 margin-bottom: 20px;
-width: 40%;
+width: 60%;
 `
 
 
