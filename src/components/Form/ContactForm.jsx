@@ -1,13 +1,13 @@
 import { Formik, ErrorMessage  } from 'formik';
 import { FormContainer, BtnAdd, Label, Span, Input } from './Form.styled';
 import * as yup from 'yup';
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContacts } from 'redux/ContactsOperations';
 
 const schema = yup.object().shape({
     name: yup.string().required("Please enter your name"),
-    phone: yup.string().trim().min(7).max(7)
+    number: yup.string().trim().min(7).max(7)
     .required("Please enter your tel")
     .matches(
       /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/ ,
@@ -17,15 +17,16 @@ const schema = yup.object().shape({
 });
 
 const initialValues = {
-    id: "",
+    // id: "",
         name: '',
-    phone: "",
+    number: "",
 };
 export default function ContactForm() {
     const dispatch = useDispatch();
     const contactsData = useSelector(state => state.contacts.items);
     const handleSubmit = (values, { resetForm }) => {
-        values.id = nanoid();
+        console.log(values)
+        // values.id = nanoid();
        if (!contactsData.includes(values.name)) {
         dispatch(addContacts(values))
        }else {alert(`${values.name} is allready in contacts`) }
@@ -44,8 +45,8 @@ export default function ContactForm() {
                 </Label>
                  <Label htmlFor="phone">
                   <Span>Number</Span>
-                        <Input type="tel" name="phone" />
-                    <ErrorMessage name='phone' component="div"/> 
+                        <Input type="tel" name="number" />
+                    <ErrorMessage name='number' component="div"/> 
                 </Label>
                     <BtnAdd type="submit">Add contact{ }</BtnAdd>
             </FormContainer>

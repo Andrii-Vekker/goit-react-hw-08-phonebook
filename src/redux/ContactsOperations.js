@@ -2,14 +2,6 @@ import { getContacts, addContact, removeContact } from "API/Api";
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import {fetchContactsRequest, fetchContactsSuccess, fetchContactsError, addContactsRequest,
-// addContactsSuccess,
-// addContactsError,
-// deleteContactsRequest,
-// deleteContactsSuccess,
-// deleteContactsError } from "./contactsActions";
-
-/////////////////////createAsyncThunk//////////////////////
 
   const isDublicate = ({name}, contacts) => {
   const normalizedName = name.toLowerCase()
@@ -24,6 +16,7 @@ export const fetchContacts = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const contacts = await getContacts();
+      console.log(contacts)
       return contacts
     } catch (error) {
       return rejectWithValue(error.message)
@@ -33,7 +26,6 @@ export const fetchContacts = createAsyncThunk(
   export const addContacts = createAsyncThunk(
   'contacts/addContacts',
     async (data, { rejectWithValue }) => {
-    console.log(data)
     try {
       const contacts = await addContact(data);
       return contacts
@@ -44,7 +36,7 @@ export const fetchContacts = createAsyncThunk(
     },
     {
       condition: (data, {getState}) => {
-     const {contacts} = getState() 
+        const { contacts } = getState() 
        if (isDublicate(data, contacts.items)) {
         toast.error("This name allredy in contacts")
        }

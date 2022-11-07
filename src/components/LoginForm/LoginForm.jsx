@@ -20,12 +20,9 @@ export default function LoginForm() {
     const dispatch = useDispatch()
     
     const handleSubmit = (values, { resetForm }) => {
-         
-        console.log(values)
         dispatch(loginUser(values))
         resetForm()
     };
-
     
     return (
         <>
