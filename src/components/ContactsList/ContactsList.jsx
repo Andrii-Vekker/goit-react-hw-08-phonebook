@@ -29,8 +29,8 @@ export default function ContactsList() {;
            <>
                {loadingStatus && <Loader/>}
                <List>
-                {contacts.length>0 &&   visibleContacts.map(({ name, phone, id }) => (
-                                    <Item key={id}>{name} : {phone}
+                {contacts.length>0 &&   visibleContacts.map(({ name, number, id }) => (
+                                    <Item key={id}>{name} : {number}
                         <BtnAdd type="button" onClick={() => dispatch(deleteContacts(id))}>
                             <span style={{ color: "red", cursor: "pointer" }}>&times;</span></BtnAdd>
                     </Item>

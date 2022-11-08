@@ -1,25 +1,17 @@
-import axios from "axios";
-import { token } from "./ApiAuth";
-// import instance from "./ApiAuth";
-// axios.defaults.baseURL = "https://auth-backend-lesson.herokuapp.com/api"
+// import axios from "axios";
+import { instance } from "./ApiAuth";
 
 export const getContacts = async () => {
-    const { data } = await axios.get("/contacts");
-    token.set(data.token)
-    //  instance.defaults.headers.common.authorization = `Bearer ${data.token}`;
+    const { data } = await instance.get("/contacts");
     return data
 };
 
 export const addContact = async (data) => {
-    const { data: result } = await axios.post("/contacts", data);
-    token.set(data.token)
-    //  instance.defaults.headers.common.authorization = `Bearer ${data.token}`;
+    const { data: result } = await instance.post("/contacts", data);
     return result
 };
 
 export const removeContact = async (id) => {
-    const data = await axios.delete(`/contacts/${id}`)
-    token.set(data.token)
-    //  instance.defaults.headers.common.authorization = `Bearer ${data.token}`;
+    const data = await instance.delete(`/contacts/${id}`)
     return data
 }

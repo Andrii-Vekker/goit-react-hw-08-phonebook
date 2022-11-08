@@ -3,11 +3,12 @@ import { signupUser, loginUser, logOutUser } from "./authOperations";
 
 const initialState = {
     user: {},
-    // token: "",
+    token: "",
     isLogin: false,
     loading: false,
     error: null
 };
+
 
 const authSlise = createSlice({
     name: "auth",
@@ -19,7 +20,7 @@ const authSlise = createSlice({
         },
         [signupUser.fulfilled]: (store, { payload }) => {
             store.user = payload.user;
-            // store.token = payload.token;
+            store.token = payload.token;
             store.loading = false;
             store.isLogin = true
         },
@@ -34,7 +35,7 @@ const authSlise = createSlice({
         },
         [loginUser.fulfilled]: (store, { payload }) => {
             store.user = payload.user;
-            // store.token = payload.token;
+            store.token = payload.token;
             store.loading = false;
             store.isLogin = true
         },
@@ -48,7 +49,9 @@ const authSlise = createSlice({
             store.error = null
         },
         [logOutUser.fulfilled]: (store) => {
+            // store = initialState
             store.user = {};
+            store.token = "";
             store.loading = false;
             store.isLogin = false
         },
