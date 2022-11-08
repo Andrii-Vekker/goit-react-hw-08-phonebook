@@ -1,7 +1,7 @@
 import axios from "axios";
 import { token } from "./ApiAuth";
 // import instance from "./ApiAuth";
-
+// axios.defaults.baseURL = "https://auth-backend-lesson.herokuapp.com/api"
 
 export const getContacts = async () => {
     const { data } = await axios.get("/contacts");
@@ -12,7 +12,7 @@ export const getContacts = async () => {
 
 export const addContact = async (data) => {
     const { data: result } = await axios.post("/contacts", data);
-    token.set(result.token)
+    token.set(data.token)
     //  instance.defaults.headers.common.authorization = `Bearer ${data.token}`;
     return result
 };

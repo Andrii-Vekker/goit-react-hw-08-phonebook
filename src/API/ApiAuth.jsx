@@ -8,7 +8,7 @@ export const token = {
     set(token) {
         axios.defaults.headers.common.Authorization = `Bearer ${token}`
     },
-    unset(token) {
+    unset() {
         axios.defaults.headers.common.Authorization = ""
     },
 };
@@ -16,19 +16,20 @@ export const token = {
 export const signup = async (signupData) => {
     const { data } = await axios.post("/users/signup", signupData);
     // instance.defaults.headers.common.authorization = `Bearer ${data.token}`;
-    token.set(signupData.token)
+    token.set(data.token)
     return data;
 }
 
 export const login = async (loginData) => {
     const { data } = await axios.post("/users/login", loginData);
     // instance.defaults.headers.common.authorization = `Bearer ${data.token}`;
-    token.set(loginData.token)
+    token.set(data.token)
     return data;
 };
 
 export const logOut = async () => {
     await axios.post("/users/logout")
+    token.unset()
   
 }
 
