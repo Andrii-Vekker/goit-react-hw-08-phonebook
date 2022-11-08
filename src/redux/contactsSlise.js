@@ -1,13 +1,16 @@
 import { fetchContacts, addContacts, deleteContacts } from "./ContactsOperations";
 import { createSlice } from "@reduxjs/toolkit";
 // import Loader from "components/Loader/Loader";
+// import { isLogin } from "./auth/authSelectors";
+// import { useSelector } from "react-redux";
+
 
 export const contactsReducer = createSlice({
     name: 'contacts',
     initialState: {
         items: [],
         isLoading: false,
-        error: null
+        error: null,
     },
     extraReducers: {
         [fetchContacts.pending]: (state) => {
