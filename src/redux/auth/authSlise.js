@@ -67,7 +67,7 @@ const authSlise = createSlice({
         [currentUser.fulfilled]: (store, { payload }) => {
             console.log(payload)
             // store = initialState
-            store.user = payload.user;
+            store.user = payload;
             store.loading = false;
             store.isLogin = true
         },

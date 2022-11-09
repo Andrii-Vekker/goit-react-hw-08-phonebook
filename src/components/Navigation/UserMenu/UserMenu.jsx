@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 export default function UserMenu() {
     const dispatch = useDispatch()
     const email = useSelector(state => state.auth.user.email)
-   console.log(email)
+    console.log(email)
     return (
         <UserMenuContainer>
             <p>{email}</p>

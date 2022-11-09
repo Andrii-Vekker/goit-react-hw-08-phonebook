@@ -11,9 +11,9 @@ import { Navigate } from "react-router";
 export default function ContactsPage() {
   const isUserLogin = useSelector(isLogin)
 
-if (!isUserLogin) {
-  return <Navigate to="/"/>
-}
+// if (!isUserLogin) {
+//   return <Navigate to="/"/>
+// }
 
   return (
     <>
