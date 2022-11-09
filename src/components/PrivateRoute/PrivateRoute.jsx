@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 
 export default function PrivateRoute() {
     const isUserLogin = useSelector(isLogin);
-    console.log(isUserLogin)
 if (!isUserLogin) {
   <Navigate to="/"/>  
 }

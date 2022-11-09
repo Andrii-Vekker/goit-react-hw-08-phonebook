@@ -5,7 +5,8 @@ import { Navigate } from "react-router";
 
 
 export default function PublicRoutes() {
-    const isUserLogin = useSelector(isLogin);
+  const isUserLogin = useSelector(isLogin);
+  console.log(isUserLogin)
 if (isUserLogin) {
   <Navigate to="/contacts"/>  
     };
