@@ -1,7 +1,6 @@
 import { Formik, ErrorMessage  } from 'formik';
 import { FormContainer, BtnAdd, Label, Span, Input } from './Form.styled';
 import * as yup from 'yup';
-// import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContacts } from 'redux/ContactsOperations';
 
@@ -17,8 +16,7 @@ const schema = yup.object().shape({
 });
 
 const initialValues = {
-    // id: "",
-        name: '',
+    name: '',
     number: "",
 };
 export default function ContactForm() {
@@ -26,7 +24,6 @@ export default function ContactForm() {
     const contactsData = useSelector(state => state.contacts.items);
     const handleSubmit = (values, { resetForm }) => {
         console.log(values)
-        // values.id = nanoid();
        if (!contactsData.includes(values.name)) {
         dispatch(addContacts(values))
        }else {alert(`${values.name} is allready in contacts`) }
