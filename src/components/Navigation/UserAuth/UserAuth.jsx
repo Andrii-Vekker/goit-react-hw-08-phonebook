@@ -1,13 +1,12 @@
-import { NavLink } from "react-router-dom";
 import { AuthContainer } from "./UserAuth.stylrd";
-import { AuthLink } from "./UserAuth.stylrd";
+import { LinkStyled } from "linkStyles/Link.styled";
 
 
 export default function UserAuth() {
   return (
       <AuthContainer>
-          <AuthLink to="/register">Register</AuthLink>
-          <AuthLink to="/login">Login</AuthLink>
+          <LinkStyled to="/register">Register</LinkStyled>
+          <LinkStyled to="/login">Login</LinkStyled>
     </AuthContainer>
   )
 }

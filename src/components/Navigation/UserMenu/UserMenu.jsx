@@ -1,16 +1,16 @@
 import { UserMenuContainer } from "./UserMenu.styled";
 import { useDispatch } from "react-redux";
 import { logOutUser } from "redux/auth/authOperations";
-// import { useSelector } from "react-redux";
-// import { isLogin } from "redux/auth/authSelectors";
+import { useSelector } from "react-redux";
 
 export default function UserMenu() {
     const dispatch = useDispatch()
-    // const isLogout = useSelector(isLogin)
+    const email = useSelector(state => state.auth.user.email)
+   console.log(email)
     return (
         <UserMenuContainer>
-            <p>mango@mail.com</p>
-            <button type="button" onClick={() => dispatch(logOutUser())}>LOGOUT</button>
+            <p>{email}</p>
+            <button type="button" onClick={() => dispatch(logOutUser())}>LOGOUT</button>          
         </UserMenuContainer>
     );
 };

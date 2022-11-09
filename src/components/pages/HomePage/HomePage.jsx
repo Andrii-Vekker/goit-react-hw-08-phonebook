@@ -1,10 +1,7 @@
-import Home from "components/Home/Home"
-import { NavLink } from "react-router-dom"
-
-
+import { LinkStyled } from "linkStyles/Link.styled"
 
 export default function HomePage() {
   return (
-    <NavLink>Home</NavLink>
+    <LinkStyled to="/">Home</LinkStyled>
   )
 }

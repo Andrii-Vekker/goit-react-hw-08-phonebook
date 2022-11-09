@@ -5,14 +5,17 @@ import { deleteContacts } from "redux/ContactsOperations";
 import { fetchContacts } from "redux/ContactsOperations";
 import { useEffect } from "react";
 import Loader from "components/Loader/Loader";
+import { isLogin } from "redux/auth/authSelectors";
 
 
-export default function ContactsList() {;
+export default function ContactsList() {
     const filterValue = useSelector(state => state.filter.filter);
     const storeContacts = useSelector(state => state.contacts.items)
     const loadingStatus = useSelector(state => state.contacts.isLoading)
+    const isLoginUser = useSelector(isLogin)
       const dispatch = useDispatch();
     const contacts = useSelector(state => state.contacts.items) 
+    
     useEffect(() => {
         dispatch(fetchContacts());
     }, [dispatch]);
@@ -29,7 +32,7 @@ export default function ContactsList() {;
            <>
                {loadingStatus && <Loader/>}
                <List>
-                {contacts.length>0 &&   visibleContacts.map(({ name, number, id }) => (
+                {contacts.length>0 && isLoginUser && visibleContacts.map(({ name, number, id }) => (
                                     <Item key={id}>{name} : {number}
                         <BtnAdd type="button" onClick={() => dispatch(deleteContacts(id))}>
                             <span style={{ color: "red", cursor: "pointer" }}>&times;</span></BtnAdd>

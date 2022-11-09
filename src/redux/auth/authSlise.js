@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { signupUser, loginUser, logOutUser } from "./authOperations";
+import { signupUser, loginUser, logOutUser, currentUser } from "./authOperations";
 
 const initialState = {
     user: {},
@@ -24,12 +24,12 @@ const authSlise = createSlice({
             store.loading = false;
             store.isLogin = true
         },
-        [signupUser.rejected]: (store, {payload}) => {
+        [signupUser.rejected]: (store, { payload }) => {
             store.loading = false;
-            store.error = payload  
+            store.error = payload
     
         },
-         [loginUser.pending]: (store) => {
+        [loginUser.pending]: (store) => {
             store.loading = true;
             store.error = null
         },
@@ -39,12 +39,12 @@ const authSlise = createSlice({
             store.loading = false;
             store.isLogin = true
         },
-        [loginUser.rejected]: (store, {payload}) => {
+        [loginUser.rejected]: (store, { payload }) => {
             store.loading = false;
-            store.error = payload  
+            store.error = payload
     
         },
-          [logOutUser.pending]: (store) => {
+        [logOutUser.pending]: (store) => {
             store.loading = true;
             store.error = null
         },
@@ -55,9 +55,25 @@ const authSlise = createSlice({
             store.loading = false;
             store.isLogin = false
         },
-        [logOutUser.rejected]: (store, {payload}) => {
+        [logOutUser.rejected]: (store, { payload }) => {
             store.loading = false;
-            store.error = payload  
+            store.error = payload
+    
+        },
+        [currentUser.pending]: (store) => {
+            store.loading = true;
+            store.error = null
+        },
+        [currentUser.fulfilled]: (store, { payload }) => {
+            console.log(payload)
+            // store = initialState
+            store.user = payload.user;
+            store.loading = false;
+            store.isLogin = true
+        },
+        [currentUser.rejected]: (store, { payload }) => {
+            store.loading = false;
+            store.error = payload
     
         }
     }

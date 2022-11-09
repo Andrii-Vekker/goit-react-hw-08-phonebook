@@ -1,4 +1,3 @@
-// import axios from "axios";
 import { instance } from "./ApiAuth";
 
 export const getContacts = async () => {
