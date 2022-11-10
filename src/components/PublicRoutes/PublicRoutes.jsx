@@ -3,12 +3,9 @@ import { isLogin } from "redux/auth/authSelectors";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router";
 
-
-export default function PublicRoutes() {
+export default function PublicRoutes({restricted}) {
   const isUserLogin = useSelector(isLogin);
-  console.log(isUserLogin)
-if (isUserLogin) {
-  <Navigate to="/contacts"/>  
-    };
-    return( <Outlet/>)
+  const shouldNavigate = isUserLogin && restricted
+  return shouldNavigate ? <Navigate to="/contacts"/> : <Outlet/>
+
 };

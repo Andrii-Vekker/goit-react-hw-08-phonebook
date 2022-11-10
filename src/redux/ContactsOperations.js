@@ -2,8 +2,6 @@ import { getContacts, addContact, removeContact } from "API/Api";
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useSelector } from "react-redux";
-import { isLogin } from "./auth/authSelectors";
 
   const isDublicate = ({name}, contacts) => {
   const normalizedName = name.toLowerCase()
@@ -16,10 +14,6 @@ import { isLogin } from "./auth/authSelectors";
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchContacts',
   async (_, { rejectWithValue }) => {
-    const isLoginUser = useSelector(isLogin())
-    if (!isLoginUser) {
-      return
-    }
     try {
       const contacts = await getContacts();
       return contacts

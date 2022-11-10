@@ -1,7 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { login, signup, logOut, getCurrentUser } from "API/ApiAuth";
-import { useSelector } from "react-redux";
-import { isLogin } from "./authSelectors";
  
 export const signupUser = createAsyncThunk(
     "auth/signup",
@@ -55,10 +53,6 @@ export const logOutUser = createAsyncThunk(
 export const currentUser = createAsyncThunk(
     "auth/current",
     async (_, { rejectWithValue, getState }) => {
-         const isLoginUser = useSelector(isLogin())
-    if (!isLoginUser) {
-      return
-    }
         try {
             const { auth } = getState()
             const res = await getCurrentUser(auth.token);

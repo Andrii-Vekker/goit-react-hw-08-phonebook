@@ -12,7 +12,7 @@ import PublicRoutes from "components/PublicRoutes/PublicRoutes";
 export default function UserRoutes() {
   return (
     <Routes>
-      <Route element={<PublicRoutes />}>
+      <Route element={<PublicRoutes restricted={true} />}>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />

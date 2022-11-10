@@ -4,7 +4,6 @@ import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { signupUser } from 'redux/auth/authOperations';
 
-
 const schema = yup.object().shape({
     name: yup.string().required("Please enter your name"),
     email:yup.string().required("Please enter your email"),
